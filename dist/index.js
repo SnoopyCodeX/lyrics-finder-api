@@ -19,7 +19,12 @@ const lyrics_1 = __importDefault(require("./functions/lyrics"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: '*'
+    origin: [
+        'https://lyrics-finder.snoopycodex.ph',
+        `http://localhost:${process.env.PORT || 3000}`
+    ],
+    methods: ['GET'],
+    optionsSuccessStatus: 200
 }));
 app.get('/lyrics', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const song = req.query.song;

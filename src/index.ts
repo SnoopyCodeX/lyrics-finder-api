@@ -6,7 +6,12 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: '*'
+    origin: [
+      'https://lyrics-finder.snoopycodex.ph',
+      `http://localhost:${process.env.PORT || 3000}`
+    ],
+    methods: ['GET'],
+    optionsSuccessStatus: 200
 }));
 
 app.get('/lyrics', async (req, res) => {
